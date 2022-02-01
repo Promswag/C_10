@@ -6,21 +6,24 @@
 #    By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:08:24 by gbaumgar          #+#    #+#              #
-#    Updated: 2022/01/31 14:07:49 by gbaumgar         ###   ########.fr        #
+#    Updated: 2022/02/01 21:16:49 by gbaumgar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= ft_cat
+NAME	= ft_tail
 
 SRCDIR	= ./srcs/
 INCDIR	= ./includes/
 
-SRC		= 	ft_cat \
-			ft_read_file \
-			ft_putstr \
-			ft_read_stdin \
-			ft_strlen
-			
+SRC		= 	ft_tail\
+			ft_read_file_tail\
+			ft_strcmp\
+			ft_atoi\
+			ft_putstr\
+			ft_strlen\
+			ft_strcat\
+			ft_error_handler
+
 SRCC	= ${SRC:%=${SRCDIR}%.c}
 OBJS	= ${SRC:%=${SRCDIR}%.o}
 
@@ -41,5 +44,3 @@ fclean: clean
 	rm -f ${NAME}
 
 re: fclean ${NAME}
-
-

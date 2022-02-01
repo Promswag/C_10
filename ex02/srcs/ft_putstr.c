@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/26 15:11:20 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/02/01 21:40:08 by gbaumgar         ###   ########.fr       */
+/*   Created: 2022/01/26 18:38:44 by gbaumgar          #+#    #+#             */
+/*   Updated: 2022/01/26 19:35:39 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#include <ft.h>
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <sys/errno.h>
-# include <unistd.h>
+void	ft_putstr(char *str)
+{
+	int	i;
 
-# include <stdio.h>
-# include <string.h>
-
-# define BUF_SIZE 29696
-
-void	ft_read_file(char *filename);
-void	ft_read_stdin(void);
-void	ft_putstr(char *str);
-int		ft_strlen(char *str);
-
-#endif
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	write(1, str, i);
+}

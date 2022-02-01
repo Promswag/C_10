@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/26 15:11:20 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/02/01 21:40:08 by gbaumgar         ###   ########.fr       */
+/*   Created: 2022/01/18 16:06:37 by gbaumgar          #+#    #+#             */
+/*   Updated: 2022/01/18 16:59:04 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+char	*ft_strcat(char *dest, char *src)
+{
+	int	i;
+	int	j;
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <sys/errno.h>
-# include <unistd.h>
-
-# include <stdio.h>
-# include <string.h>
-
-# define BUF_SIZE 29696
-
-void	ft_read_file(char *filename);
-void	ft_read_stdin(void);
-void	ft_putstr(char *str);
-int		ft_strlen(char *str);
-
-#endif
+	i = 0;
+	j = 0;
+	while (dest[i] != '\0')
+		i++;
+	while (src[j] != '\0')
+		dest[i++] = src[j++];
+	dest[i] = '\0';
+	return (dest);
+}
