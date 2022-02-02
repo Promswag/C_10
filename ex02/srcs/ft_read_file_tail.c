@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 18:38:59 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/02/02 14:56:08 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/02/02 18:48:52 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,22 @@ char	*ft_read_file(int file)
 	return (str);
 }
 
-int	ft_open_file(char *filename)
+int	ft_open_file(char *prog, char *filename)
 {
 	int		file;
 
 	file = open(filename, O_RDONLY);
 	if (file == -1)
-		ft_error_handler(filename);
+		ft_error_handler(prog, filename);
 	return (file);
 }
 
-int	ft_file_handler(char *filename, t_jpp kek)
+int	ft_file_handler(char *prog, char *filename, t_jpp kek)
 {
 	int		file;
 	char	*buffer;
 
-	file = ft_open_file(filename);
+	file = ft_open_file(prog, filename);
 	if (file == -1)
 		return (-1);
 	buffer = ft_read_file(file);

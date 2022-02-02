@@ -6,23 +6,25 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:07:54 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/02/02 15:23:13 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/02/02 19:02:21 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft.h>
 
-int	ft_print_missing_arg(void)
+int	ft_print_missing_arg(char *prog)
 {
-	write(2, "ft_tail: option requires an argument -- c\n", 42);
+	write(2, prog, ft_strlen(prog));
+	write(2, ": option requires an argument -- c\n", 35);
 	write(2, "usage: tail [-F | -f | -r] [-q] ", 32);
 	write(2, "[-b # | -c # | -n #] [file ...]\n", 32);
 	return (0);
 }
 
-int	ft_print_illegal_offset(char *str)
+int	ft_print_illegal_offset(char *prog, char *str)
 {
-	write(2, "ft_tail: illegal offset -- ", 27);
+	write(2, prog, ft_strlen(prog));
+	write(2, ": illegal offset -- ", 20);
 	write(2, str, ft_strlen(str));
 	write(2, "\n", 1);
 	return (0);
@@ -35,21 +37,21 @@ int	ft_args_handler(int argc, char **argv)
 	if (argc == 2)
 	{
 		if (ft_strcmp("-c", argv[1]) == 0)
-			return (ft_print_missing_arg());
+			return (ft_print_missing_arg(basename(argv[0])));
 	}
 	if (ft_strcmp("-c", argv[1]) == 0)
 	{
 		if (ft_only_nums(argv[2]))
 			return (2);
 		else
-			return (ft_print_illegal_offset(argv[2]));
+			return (ft_print_illegal_offset(basename(argv[0]), argv[2]));
 	}
 	else if (ft_strncmp("-c", argv[1], 2) == 0)
 	{
 		if (ft_only_nums(argv[1] + 2))
 			return (3);
 		else
-			return (ft_print_illegal_offset(argv[1] + 2));
+			return (ft_print_illegal_offset(basename(argv[0]), argv[1] + 2));
 	}
 	return (0);
 }
@@ -75,7 +77,7 @@ int	main(int argc, char **argv)
 	{
 		if (_s.r == -1 && _s.p != -1)
 			ft_putstr("\n");
-		_s.r = ft_file_handler(argv[_s.i], _s);
+		_s.r = ft_file_handler(basename(argv[0]), argv[_s.i], _s);
 		if (_s.i < argc + 1 && _s.r == -1)
 			write(2, "\n", 1);
 		_s.p = _s.r;

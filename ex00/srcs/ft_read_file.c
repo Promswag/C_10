@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 18:38:59 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/01/26 19:35:20 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/02/02 18:10:49 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_read_file(char *filename)
 	file = open(filename, O_RDONLY);
 	if (file == -1)
 	{
-		write(2, "Cannot read file\n", 17);
+		write(2, "Cannot read file.\n", 18);
 		return ;
 	}
 	reading = 1;
@@ -30,7 +30,7 @@ void	ft_read_file(char *filename)
 		reading = read(file, buffer, 4096);
 		buffer[reading] = '\0';
 		if (reading == -1)
-			write(2, "Cannot read file\n", 17);
+			write(2, "Cannot read file.\n", 18);
 		ft_putstr(buffer);
 	}
 	close(file);

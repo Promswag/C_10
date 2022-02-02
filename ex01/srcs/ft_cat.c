@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:07:54 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/01/27 18:22:53 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/02/02 18:43:34 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 		if (argv[i][0] == '-' && ft_strlen(argv[i]) == 1)
 			ft_read_stdin();
 		else
-			ft_read_file(argv[i]);
+			ft_read_file(argv[0], argv[i]);
 		i++;
 	}
 	if (argc == 1)

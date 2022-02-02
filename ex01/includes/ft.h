@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:11:20 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/02/01 21:40:08 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/02/02 18:42:32 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 # define BUF_SIZE 29696
 
-void	ft_read_file(char *filename);
+void	ft_read_file(char *prog, char *filename);
 void	ft_read_stdin(void);
 void	ft_putstr(char *str);
 int		ft_strlen(char *str);
