@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 18:38:59 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/02/01 21:34:23 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/02/02 14:56:08 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,10 @@ void	ft_print_tail(char *str, int offset)
 void	ft_print_multiple_tail(char *filename, char *str, int offset)
 {
 	int		length;
-	char	*name;
-
 
 	length = ft_strlen(str);
-	name = basename(filename);
 	ft_putstr("==> ");
-	ft_putstr(name);
+	ft_putstr(filename);
 	ft_putstr(" <==\n");
 	if (offset > length)
 		ft_putstr(str);
@@ -44,25 +41,13 @@ char	*ft_read_file(int file)
 {	
 	int		reading;
 	char	buffer[BUF_SIZE + 1];
-	// char	*tmp;
 	char	*str;
 
+	buffer[0] = '\0';
 	reading = read(file, buffer, BUF_SIZE);
+	if (reading == -1)
+		return (NULL);
 	buffer[reading] = '\0';
-
-	// reading = 1;
-	// while (reading)
-	// {
-	// 	reading = read(file, buffer, BUF_SIZE);
-	// 	if (reading == -1)
-	// 		return (NULL);
-	// 	buffer[reading] = '\0';
-	// 	// tmp = malloc(sizeof(char) * (ft_strlen(buffer) + ft_strlen(str) + 1));
-	// 	tmp = ft_strcat(str, buffer);
-	// 	str = tmp;
-	// 	free(tmp);
-	// }
-	// return (str);
 	str = buffer;
 	return (str);
 }
@@ -77,20 +62,23 @@ int	ft_open_file(char *filename)
 	return (file);
 }
 
-void	ft_file_handler(int argc, char *filename, int offset)
+int	ft_file_handler(char *filename, t_jpp kek)
 {
 	int		file;
 	char	*buffer;
 
 	file = ft_open_file(filename);
 	if (file == -1)
-		return ;
+		return (-1);
 	buffer = ft_read_file(file);
 	if (*buffer == '\0')
-		return ;
-	if (argc == 4)
-		ft_print_tail(buffer, offset);
-	else if (argc > 4)
-		ft_print_multiple_tail(filename, buffer, offset);
+		return (-1);
+	if (kek.p == 0 || kek.p == -1)
+		ft_putstr("\n");
+	if ((kek.s == 3 && kek.a == 3) || (kek.s == 2 && kek.a == 4))
+		ft_print_tail(buffer, kek.o);
+	else
+		ft_print_multiple_tail(filename, buffer, kek.o);
 	close(file);
+	return (0);
 }

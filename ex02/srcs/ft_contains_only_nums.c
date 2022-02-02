@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_handler.c                                 :+:      :+:    :+:   */
+/*   ft_contains_only_nums.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 21:17:19 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/02/02 10:50:12 by gbaumgar         ###   ########.fr       */
+/*   Created: 2022/02/02 12:00:59 by gbaumgar          #+#    #+#             */
+/*   Updated: 2022/02/02 12:18:02 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft.h>
 
-void	ft_error_handler(char *filename)
+int	ft_only_nums(char *str)
 {
-	write(2, "ft_tail: ", 9);
-	write(2, filename, ft_strlen(filename));
-	write(2, ": ", 2);
-	write(2, strerror(errno), ft_strlen(strerror(errno)));
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] < 48 || str[i] > 57)
+			return (0);
+	return (1);
 }

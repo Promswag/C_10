@@ -6,7 +6,7 @@
 #    By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:08:24 by gbaumgar          #+#    #+#              #
-#    Updated: 2022/02/01 21:16:49 by gbaumgar         ###   ########.fr        #
+#    Updated: 2022/02/02 12:06:22 by gbaumgar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC		= 	ft_tail\
 			ft_putstr\
 			ft_strlen\
 			ft_strcat\
-			ft_error_handler
+			ft_error_handler\
+			ft_contains_only_nums
 
 SRCC	= ${SRC:%=${SRCDIR}%.c}
 OBJS	= ${SRC:%=${SRCDIR}%.o}
